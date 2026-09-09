@@ -1,1 +1,204 @@
-<center><h1>Masih Dalam Perbaikan</h1></h1></center>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situs Dalam Perbaikan - alat.onlapak.my.id</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Efek Kilau / Ambient Light di Latar Belakang */
+        .background-glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #ff9900, #ff5500);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            animation: pulse 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.2; }
+            100% { transform: scale(1.2); opacity: 0.35; }
+        }
+
+        /* Wadah Utama / Kartu Glassmorphism */
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 50px 40px;
+            text-align: center;
+            max-width: 520px;
+            width: 90%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Lingkaran Ikon & Animasi Kunci Pas */
+        .icon-box {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px auto;
+            background: linear-gradient(135deg, rgba(255, 153, 0, 0.2), rgba(255, 85, 0, 0.2));
+            border: 1px solid rgba(255, 153, 0, 0.4);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 25px rgba(255, 153, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .icon-box i {
+            font-size: 45px;
+            color: #ff9900;
+            filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.6));
+            transform: rotate(-15deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Teks & Subtitle */
+        .domain-tag {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #ff9900;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            font-size: 15px;
+            color: #a0aab8;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Indicatror Status & Loading Bar */
+        .status-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .status-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #d1d5db;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            width: 65%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff9900, #ff5500);
+            border-radius: 10px;
+            position: relative;
+            animation: progressGlow 2s infinite linear;
+        }
+
+        /* Footer */
+        .footer-text {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* Responsif untuk Layar HP */
+        @media (max-width: 480px) {
+            .card {
+                padding: 35px 20px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Latar Belakang Cahaya / Glow -->
+    <div class="background-glow"></div>
+
+    <!-- Konten Utama -->
+    <div class="card">
+        <div class="icon-box">
+            <i class="fa-solid fa-wrench"></i>
+        </div>
+        
+        <span class="domain-tag">alat.onlapak.my.id</span>
+        <h1>Sedang Dalam Perbaikan</h1>
+        
+        <p>Kami sedang melakukan pemeliharaan dan peningkatan sistem untuk memberikan pengalaman terbaik bagi Anda. Mohon tunggu beberapa hari lagi.</p>
+
+        <!-- Progress Status Perbaikan -->
+        <div class="status-container">
+            <div class="status-text">
+                <span><i class="fa-solid fa-gear fa-spin" style="margin-right: 6px;"></i> Progres Pemeliharaan</span>
+                <span style="color: #ff9900; font-weight: 600;">Proses</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="footer-text">
+            &copy; 2026 Onlapak.my.id - Terima kasih atas kesabaran Anda.
+        </div>
+    </div>
+
+</body>
+  </html>
