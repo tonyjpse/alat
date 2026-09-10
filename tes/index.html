@@ -3,655 +3,749 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alat Onlapak - Toko online terpercaya untuk berbagai peralatan berkualitas">
-    <title>Alat Onlapak - Peralatan Berkualitas</title>
+    <!-- Meta Tag untuk SEO -->
+    <meta name="description" content="Alat Onlapak - Pusat rekomendasi peralatan dan perkakas terbaik berkualitas tinggi. Dapatkan penawaran terbaik untuk berbagai peralatan pilihan.">
+    <title>Alat Onlapak - Rekomendasi Peralatan Berkualitas</title>
+    
     <style>
+        /* ===================================
+           RESET & VARIABEL DESAIN ELEGANT
+        =================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e74c3c;
-            --accent-color: #f39c12;
-            --bg-light: #ecf0f1;
-            --text-dark: #34495e;
-            --white: #ffffff;
-            --shadow: rgba(0,0,0,0.1);
+            --bg-body: #f4f6f9;
+            --bg-card: #ffffff;
+            --primary-dark: #0f172a;   /* Slate gelap elegan */
+            --accent-gold: #d97706;    /* Eksen emas/amber premium */
+            --accent-hover: #b45309;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
         }
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--primary-color), #34495e);
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px var(--shadow);
-        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 20px;
         }
-        nav {
+
+        /* ===================================
+           NAVIGASI & HEADER
+        =================================== */
+        header {
+            background-color: var(--primary-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px;
         }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--white);
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
             text-decoration: none;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        .nav-links {
+
+        .brand-logo span {
+            color: var(--accent-gold);
+        }
+
+        .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 25px;
         }
-        .nav-links a {
-            color: var(--white);
+
+        .nav-link {
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-        .nav-links a:hover {
-            color: var(--accent-color);
+
+        .nav-link:hover {
+            color: var(--accent-gold);
         }
+
+        /* Menu Hamburger (Mobile) */
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
         }
-        .hamburger span {
+
+        .bar {
             width: 25px;
             height: 3px;
-            background-color: var(--white);
-            transition: 0.3s;
+            background-color: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
         }
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), #34495e);
-            color: var(--white);
-            padding: 4rem 0;
+
+        /* ===================================
+           SEO HERO SECTION (BODY AWAL)
+        =================================== */
+        .seo-hero {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 40px 0;
             text-align: center;
         }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s;
+
+        .seo-hero h1 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-weight: 800;
         }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
+
+        .seo-hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 750px;
             margin: 0 auto;
-            animation: fadeInUp 1s;
         }
-        /* Category Filter */
-        .category-filter {
-            background: var(--white);
-            padding: 2rem 0;
-            box-shadow: 0 2px 5px var(--shadow);
-            margin-bottom: 2rem;
+
+        /* ===================================
+           KATEGORI / LABEL FILTER
+        =================================== */
+        .filter-section {
+            padding: 30px 0 10px 0;
         }
-        .filter-buttons {
+
+        .filter-container {
             display: flex;
-            gap: 1rem;
+            gap: 10px;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .filter-btn {
-            padding: 0.7rem 1.5rem;
-            border: 2px solid var(--primary-color);
-            background: var(--white);
-            color: var(--primary-color);
-            border-radius: 25px;
+
+        .btn-filter {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 18px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary-color);
-            color: var(--white);
+
+        .btn-filter:hover, .btn-filter.active {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            border-color: var(--primary-dark);
         }
-        /* Product Grid */
-        .products-section {
-            padding: 2rem 0;
+
+        /* ===================================
+           ETALASE PRODUK (GRID 4 & 2 KOLOM)
+        =================================== */
+        .catalog-section {
+            padding: 20px 0 40px 0;
         }
-        .products-grid {
+
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(4, 1fr); /* 4 Kolom di Desktop */
+            gap: 25px;
         }
+
         .product-card {
-            background: var(--white);
-            border-radius: 10px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
             overflow: hidden;
-            box-shadow: 0 4px 6px var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
+
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px var(--shadow);
+            box-shadow: var(--shadow-md);
         }
-        .product-image {
+
+        .product-image-wrap {
             width: 100%;
-            height: 200px;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 3rem;
+            aspect-ratio: 1 / 1; /* Menjaga rasio foto tetap presisi/persegi */
             overflow: hidden;
+            background-color: #f8fafc;
         }
-        .product-image img {
+
+        .product-image-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .product-info {
-            padding: 1.5rem;
+
+        .product-card:hover .product-image-wrap img {
+            transform: scale(1.05);
         }
-        .product-info h2 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
+
+        .product-details {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
+
+        .product-details h2 {
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            line-height: 1.4;
+            height: 2.8em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
         .product-price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
         }
+
         .btn-detail {
+            margin-top: auto;
             width: 100%;
-            padding: 0.8rem;
-            background: var(--primary-color);
-            color: var(--white);
+            padding: 10px;
+            background-color: var(--primary-dark);
+            color: #ffffff;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 6px;
             font-weight: 600;
-            transition: background 0.3s;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
+
         .btn-detail:hover {
-            background: #34495e;
+            background-color: var(--accent-gold);
         }
-        /* Modal */
-        .modal {
-            display: none;
+
+        /* ===================================
+           RUANG IKLAN (ADS SPACE)
+        =================================== */
+        .ads-container {
+            margin: 20px 0 50px 0;
+            padding: 30px;
+            background-color: #e2e8f0;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* ===================================
+           POPUP MODAL DESKRIPSI
+        =================================== */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            align-items: center;
+            background: rgba(15, 23, 42, 0.75);
+            display: flex;
             justify-content: center;
-            animation: fadeIn 0.3s;
-        }
-        .modal.active {
-            display: flex;
-        }
-        .modal-content {
-            background: var(--white);
-            border-radius: 10px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s;
-        }
-        .modal-header {
-            padding: 1.5rem;
-            background: var(--primary-color);
-            color: var(--white);
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-radius: 10px 10px 0 0;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
         }
-        .modal-header h2 {
-            margin: 0;
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
-        .close-modal {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 2rem;
-            cursor: pointer;
-            line-height: 1;
-        }
-        .modal-body {
-            padding: 2rem;
-        }
-        .modal-image {
+
+        .modal-box {
+            background-color: #ffffff;
+            border-radius: 12px;
+            max-width: 500px;
             width: 100%;
-            height: 250px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 4rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ffffff;
+            border: none;
+            font-size: 1.5rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            z-index: 10;
+        }
+
+        .modal-img-wrap {
+            width: 100%;
+            max-height: 250px;
             overflow: hidden;
         }
-        .modal-image img {
+
+        .modal-img-wrap img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
-        .modal-description {
-            margin-bottom: 1.5rem;
+
+        .modal-content {
+            padding: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .modal-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .modal-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+            white-space: pre-line;
+        }
+
+        .btn-affiliate {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            background-color: var(--accent-gold);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-affiliate:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* ===================================
+           FOOTER
+        =================================== */
+        footer {
+            background-color: var(--primary-dark);
+            color: #94a3b8;
+            padding: 50px 0 20px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 0.9rem;
             line-height: 1.8;
         }
-        .modal-price {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-        }
-        .btn-order {
-            width: 100%;
-            padding: 1rem;
-            background: var(--secondary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        .btn-order:hover {
-            background: #c0392b;
-        }
-        /* Ad Space */
-        .ad-space {
-            background: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin: 3rem 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px var(--shadow);
-        }
-        .ad-space h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-            margin-top: 3rem;
-        }
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-        .footer-section ul {
+
+        .footer-col ul {
             list-style: none;
         }
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-        .footer-section a {
-            color: var(--white);
+
+        .footer-col a {
+            color: #94a3b8;
             text-decoration: none;
             transition: color 0.3s;
         }
-        .footer-section a:hover {
-            color: var(--accent-color);
+
+        .footer-col a:hover {
+            color: var(--accent-gold);
         }
+
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            font-size: 0.85rem;
         }
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        /* ===================================
+           RESPONSIF (MOBILE & TABLET)
+        =================================== */
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        /* Responsive */
+
         @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-links {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
                 position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary-color);
+                left: -100%;
+                top: 70px;
                 flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-                transform: translateY(-100%);
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0.3s;
+                background-color: var(--primary-dark);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 20px 0;
+                box-shadow: var(--shadow-md);
             }
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: all;
+
+            .nav-menu.active {
+                left: 0;
             }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-            .product-image { height: 150px; }
-            .footer-content { grid-template-columns: 1fr; }
+
+            .seo-hero h1 {
+                font-size: 1.6rem;
+            }
+
+            /* 2 Kolom di tampilan Mobile */
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .product-details {
+                padding: 10px;
+            }
+
+            .product-details h2 {
+                font-size: 0.9rem;
+            }
+
+            .product-price {
+                font-size: 1rem;
+            }
+
+            .btn-detail {
+                padding: 8px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- NAVIGASI HEADER -->
     <header>
-        <nav class="container">
-            <a href="#" class="logo">🛒 Alat Onlapak</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#products">Produk</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#contact">Kontak</a></li>
+        <div class="container navbar">
+            <a href="#" class="brand-logo">Alat <span>Onlapak</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link">Beranda</a></li>
+                <li><a href="#katalog" class="nav-link">Katalog</a></li>
+                <li><a href="#tentang" class="nav-link">Tentang Kami</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- H1 & DESKRIPSI UNTUK CRAWLER SEO -->
+    <section class="seo-hero">
         <div class="container">
-            <h1>Alat Onlapak - Peralatan Berkualitas untuk Kebutuhan Anda</h1>
-            <p>Temukan berbagai peralatan terbaik dengan harga terjangkau. Kualitas terjamin, pengiriman cepat, dan layanan pelanggan yang ramah.</p>
+            <h1>Rekomendasi Alat & Peralatan Terbaik - Alat Onlapak</h1>
+            <p>Pusat katalog peralatan dan perkakas terlengkap, terpercaya. Kami membantu Anda menemukan alat pertukangan, peralatan rumah tangga dan peralatan lain terbaik dengan kualitas yang terjamin.</p>
         </div>
     </section>
 
-    <!-- Category Filter -->
-    <section class="category-filter">
+    <!-- FILTER / LABEL KATEGORI -->
+    <section class="filter-section" id="katalog">
         <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-category="all">Semua Produk</button>
-                <button class="filter-btn" data-category="pancing">Alat Pancing</button>
-                <button class="filter-btn" data-category="dapur">Peralatan Dapur</button>
-                <button class="filter-btn" data-category="taman">Alat Taman</button>
-                <button class="filter-btn" data-category="olahraga">Alat Olahraga</button>
+            <div class="filter-container">
+                <button class="btn-filter active" onclick="filterProduk('semua')">Semua Produk</button>
+                <button class="btn-filter" onclick="filterProduk('pancing')">Alat Pancing</button>
+                <button class="btn-filter" onclick="filterProduk('pertukangan')">Pertukangan</button>
+                <button class="btn-filter" onclick="filterProduk('dapur')">Peralatan Dapur</button>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products-section" id="products">
+    <!-- ETALASE PRODUK -->
+    <section class="catalog-section">
         <div class="container">
-            <div class="products-grid" id="productsGrid">
-                
-                <!-- Product 1 -->
-                <div class="product-card" data-category="pancing" data-id="1">
-                    <div class="product-image">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjjbzA11RvHuUk7GfLh44rbF5Y2Zbqxcbkljd2fFTDjH5AqiNn2sSVJ_RCIUTByKHj85e3xIZzNNAp92SC2MDq_h_NnJpqldXSuk84B8iY2S6eK3tnFjROQjAcPPI44mE58VUa2zq-l-XMNGSVLTxRmEJ7xeHPZsfXazdZXaoQaeMVwMBSXeOIdpGvBN9/s320/Mata%20Gerinda%20poles%20-%20onlapak.webp" alt="Mata Gerinda poles">
+            <div class="product-grid" id="productGrid">
+
+                <!-- ===================================
+                     PRODUK
+                     =================================== -->
+                <div class="product-card" id="label" data-kategori="pertukangan"
+                     data-judul="Mata Gerinda Poles Made in Japan"
+                     data-harga="Rp 41.000"
+                     data-gambar="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjjbzA11RvHuUk7GfLh44rbF5Y2Zbqxcbkljd2fFTDjH5AqiNn2sSVJ_RCIUTByKHj85e3xIZzNNAp92SC2MDq_h_NnJpqldXSuk84B8iY2S6eK3tnFjROQjAcPPI44mE58VUa2zq-l-XMNGSVLTxRmEJ7xeHPZsfXazdZXaoQaeMVwMBSXeOIdpGvBN9/s320/Mata%20Gerinda%20poles%20-%20onlapak.webp"
+                     data-deskripsi="Isi 20 PCS - Grinding Wheel 4 x 6 mm Mata Gerinda Poles Batu Gerinda Poles Besi Berkualitas merk Yukido. Made in Japan Original."
+                     data-link="https://vt.tokopedia.com/t/ZS9SkoSWKBfxS-oWbLA">
+                    <div class="product-image-wrap">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjjbzA11RvHuUk7GfLh44rbF5Y2Zbqxcbkljd2fFTDjH5AqiNn2sSVJ_RCIUTByKHj85e3xIZzNNAp92SC2MDq_h_NnJpqldXSuk84B8iY2S6eK3tnFjROQjAcPPI44mE58VUa2zq-l-XMNGSVLTxRmEJ7xeHPZsfXazdZXaoQaeMVwMBSXeOIdpGvBN9/s320/Mata%20Gerinda%20poles%20-%20onlapak.webp" alt="Mata Gerinda Poles">
                     </div>
-                    <div class="product-info">
-                        <h2>Mata Gerinda poles made in japan</h2>
+                    <div class="product-details">
+                        <h2>Mata Gerinda Poles Made in Japan</h2>
                         <div class="product-price">Rp 41.000</div>
-                        <button class="btn-detail">Lihat Detail</button>
+                        <button class="btn-detail" onclick="bukaModal(this)">Lihat Detail</button>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
-                <div class="product-card" data-category="pancing" data-id="2">
-                    <div class="product-image">🎣</div>
-                    <div class="product-info">
-                        <h2>Reel Pancing Shimano</h2>
-                        <div class="product-price">Rp 750.000</div>
-                        <button class="btn-detail">Lihat Detail</button>
+                <!-- ===================================
+                     PRODUK 2
+                     =================================== -->
+                <div class="product-card" id="label" data-kategori="pancing"
+                     data-judul="Reel Pancing Metal Body Spin 1000-6000"
+                     data-harga="Rp 185.000"
+                     data-gambar="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=500&q=80"
+                     data-deskripsi="Reel pancing berbahan alumunium tahan karat. Sangat halus saat ditarik dan cocok untuk pemancing di kolam maupun laut."
+                     data-link="https://shopee.co.id">
+                    <div class="product-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=500&q=80" alt="Reel Pancing">
+                    </div>
+                    <div class="product-details">
+                        <h2>Reel Pancing Metal Body Spin 1000-6000</h2>
+                        <div class="product-price">Rp 185.000</div>
+                        <button class="btn-detail" onclick="bukaModal(this)">Lihat Detail</button>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
-                <div class="product-card" data-category="dapur" data-id="3">
-                    <div class="product-image">🔪</div>
-                    <div class="product-info">
-                        <h2>Set Pisau Dapur Premium</h2>
-                        <div class="product-price">Rp 320.000</div>
-                        <button class="btn-detail">Lihat Detail</button>
+                <!-- ===================================
+                     PRODUK 3
+                     =================================== -->
+                <div class="product-card" id="label" data-kategori="dapur"
+                     data-judul="Set Pisau Dapur Daging Stainless Steel"
+                     data-harga="Rp 95.000"
+                     data-gambar="https://images.unsplash.com/photo-1593618998160-e34014e67546?auto=format&fit=crop&w=500&q=80"
+                     data-deskripsi="Set pisau dapur tajam berbahan stainless steel anti karat. Dilengkapi pemotong tulang, pisau buah, dan talenan khusus."
+                     data-link="https://tokopedia.com">
+                    <div class="product-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1593618998160-e34014e67546?auto=format&fit=crop&w=500&q=80" alt="Pisau Dapur">
+                    </div>
+                    <div class="product-details">
+                        <h2>Set Pisau Dapur Daging Stainless Steel</h2>
+                        <div class="product-price">Rp 95.000</div>
+                        <button class="btn-detail" onclick="bukaModal(this)">Lihat Detail</button>
                     </div>
                 </div>
 
-                <!-- Product 4 -->
-                <div class="product-card" data-category="dapur" data-id="4">
-                    <div class="product-image">🍳</div>
-                    <div class="product-info">
-                        <h2>Panci Anti Lengket</h2>
-                        <div class="product-price">Rp 280.000</div>
-                        <button class="btn-detail">Lihat Detail</button>
+                <!-- ===================================
+                     PRODUK 4
+                     =================================== -->
+                <div class="product-card" id="label" data-kategori="pertukangan"
+                     data-judul="Mesin Bor Cordless Baterai 12V"
+                     data-harga="Rp 245.000"
+                     data-gambar="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=500&q=80"
+                     data-deskripsi="Bor listrik tanpa kabel. Efisien untuk memasang sekrup, kayu, dan tembok tipis. Paket termasuk 2 baterai dan charger."
+                     data-link="https://tokopedia.com">
+                    <div class="product-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=500&q=80" alt="Mesin Bor">
+                    </div>
+                    <div class="product-details">
+                        <h2>Mesin Bor Cordless Baterai 12V</h2>
+                        <div class="product-price">Rp 245.000</div>
+                        <button class="btn-detail" onclick="bukaModal(this)">Lihat Detail</button>
                     </div>
                 </div>
+
+                <!-- PRODUK BARU  -->
+                <!-- 
+                <div class="product-card" id="label" data-kategori="ISI_KATEGORI"
+                     data-judul="ISI JUDUL PRODUK"
+                     data-harga="Rp 00.000"
+                     data-gambar="URL_GAMBAR"
+                     data-deskripsi="ISI DESKRIPSI PRODUK"
+                     data-link="LINK_AFILIASI">
+                    <div class="product-image-wrap">
+                        <img src="URL_GAMBAR" alt="JUDUL">
+                    </div>
+                    <div class="product-details">
+                        <h2>ISI JUDUL PRODUK</h2>
+                        <div class="product-price">Rp 00.000</div>
+                        <button class="btn-detail" onclick="bukaModal(this)">Lihat Detail</button>
+                    </div>
+                </div>
+                -->
+                <!--  BATAS PRODUK BARU  -->
 
             </div>
 
-            <!-- Ad Space -->
-            <div class="ad-space">
-                <h3>📢 Ruang Iklan</h3>
-                <p>Tempat ini tersedia untuk iklan Anda. Hubungi kami untuk informasi lebih lanjut.</p>
+            <!-- SPACE IKLAN -->
+            <div class="ads-container">
+                <p><strong>[ RUANG IKLAN / ADSENSE ]</strong></p>
+                <p>Pasang kode script iklan Anda di bagian ini.</p>
             </div>
         </div>
     </section>
 
-    <!-- Modal -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Detail Produk</h2>
-                <button class="close-modal" id="closeModal">&times;</button>
+    <!-- POPUP MODAL DESKRIPSI -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <button class="modal-close" onclick="tutupModal()">&times;</button>
+            <div class="modal-img-wrap">
+                <img id="modalGambar" src="" alt="Detail Gambar">
             </div>
-            <div class="modal-body">
-                <div class="modal-image" id="modalImage">🎣</div>
-                <div class="modal-description" id="modalDescription">
-                    Deskripsi produk akan muncul di sini.
-                </div>
-                <div class="modal-price" id="modalPrice">Rp 0</div>
-                <a href="#" class="btn-order" id="modalOrderBtn" target="_blank" rel="noopener noreferrer">
-                    🛒 Pesan Sekarang
-                </a>
+            <div class="modal-content">
+                <h3 class="modal-title" id="modalJudul">Judul Produk</h3>
+                <div class="modal-price" id="modalHarga">Rp 0</div>
+                <div class="modal-desc" id="modalDeskripsi">Deskripsi Produk...</div>
+                <a href="#" id="modalLink" class="btn-affiliate" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer id="contact">
+    <!-- FOOTER -->
+    <footer id="tentang">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+            <div class="footer-grid">
+                <div class="footer-col">
                     <h3>Alat Onlapak</h3>
-                    <p>Toko online terpercaya untuk berbagai peralatan berkualitas dengan harga terbaik.</p>
+                    <p>Alat Onlapak menyajikan rekomendasi produk pilihan dari marketplace terpercaya untuk membantu memenuhi kebutuhan peralatan Anda.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Link Cepat</h3>
+                <div class="footer-col">
+                    <h3>Kategori Populer</h3>
                     <ul>
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="#products">Produk</a></li>
-                        <li><a href="#about">Tentang Kami</a></li>
-                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="#katalog" onclick="filterProduk('pancing')">Alat Pancing</a></li>
+                        <li><a href="#katalog" onclick="filterProduk('pertukangan')">Pertukangan</a></li>
+                        <li><a href="#katalog" onclick="filterProduk('dapur')">Peralatan Dapur</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Hubungi Kami</h3>
-                    <ul>
-                        <li>📧 info@alatonlapak.com</li>
-                        <li>📱 +62 812-3456-7890</li>
-                        <li>📍 Jakarta, Indonesia</li>
-                    </ul>
+                <div class="footer-col">
+                    <h3>Informasi</h3>
+                    <p>Semua transaksi dilakukan langsung melalui platform marketplace resmi rekanan affiliate kami.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Alat Onlapak. Semua hak dilindungi.</p>
+                <p>&copy; 2026 Alat Onlapak. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- SCRIPT UTAMA (SANGAT RINGAN & BEBAS EROR) -->
     <script>
-        // Product Data
-        const products = {
-            1: {
-                title: "Mata Gerinda poles made in japan",
-                // Cukup masukkan Tag IMG dengan tanda kutip ganda/tunggal yang rapi, atau masukkan URL gambarnya saja
-                image: `<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjjbzA11RvHuUk7GfLh44rbF5Y2Zbqxcbkljd2fFTDjH5AqiNn2sSVJ_RCIUTByKHj85e3xIZzNNAp92SC2MDq_h_NnJpqldXSuk84B8iY2S6eK3tnFjROQjAcPPI44mE58VUa2zq-l-XMNGSVLTxRmEJ7xeHPZsfXazdZXaoQaeMVwMBSXeOIdpGvBN9/s320/Mata%20Gerinda%20poles%20-%20onlapak.webp" alt="Mata Gerinda Poles">`,
-                description: "Isi 20 PCS - Grinding Wheel 4\" x 6 mm Mata Gerinda Poles Batu Gerinda Poles Besi Berkualitas merk yukido, made in japan original, harga bisa berubah sewaktu-waktu.",
-                price: "Rp 41.000",
-                affiliateLink: "https://vt.tokopedia.com/t/ZS9SkoSWKBfxS-oWbLA"
-            },
-            2: {
-                title: "Belt pelumas mesin original diskon",
-                image: `<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjjbzA11RvHuUk7GfLh44rbF5Y2Zbqxcbkljd2fFTDjH5AqiNn2sSVJ_RCIUTByKHj85e3xIZzNNAp92SC2MDq_h_NnJpqldXSuk84B8iY2S6eK3tnFjROQjAcPPI44mE58VUa2zq-l-XMNGSVLTxRmEJ7xeHPZsfXazdZXaoQaeMVwMBSXeOIdpGvBN9/s320/Mata%20Gerinda%20poles%20-%20onlapak.webp" alt="Mata Gerinda Poles">`,
-                description: "Penghilang Suara Belt Mobil 300ML Belt Dressing Pelumas Perawatan Mesin Tanpa Mengotori
-harga bisa berubah sewaktu-waktu.",
-                price: "Rp 5000 Promo",
-                affiliateLink: "https://vt.tokopedia.com/t/ZS9Skoax1yqd4-5pfs5/"
-            },
-            3: {
-                title: "Mesin Gerinda Tangan 850W Produk original",
-                image: `<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjjbzA11RvHuUk7GfLh44rbF5Y2Zbqxcbkljd2fFTDjH5AqiNn2sSVJ_RCIUTByKHj85e3xIZzNNAp92SC2MDq_h_NnJpqldXSuk84B8iY2S6eK3tnFjROQjAcPPI44mE58VUa2zq-l-XMNGSVLTxRmEJ7xeHPZsfXazdZXaoQaeMVwMBSXeOIdpGvBN9/s320/Mata%20Gerinda%20poles%20-%20onlapak.webp" alt="Mata Gerinda Poles">`,
-                description: "ISKU Mesin Gerinda Tangan 850W Dan 500W Angle Grinder Multifunction/Hand Grinding Machine Angle Grinder 850W. harga bisa berubah sewaktu-waktu. ",
-                price: "Rp 190.000 Promo",
-                affiliateLink: "https://vt.tokopedia.com/t/ZS9Sko9jfSK6T-Drh9l/"
-            },
-            4: {
-                title: "Panci Anti Lengket",
-                image: `<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjjbzA11RvHuUk7GfLh44rbF5Y2Zbqxcbkljd2fFTDjH5AqiNn2sSVJ_RCIUTByKHj85e3xIZzNNAp92SC2MDq_h_NnJpqldXSuk84B8iY2S6eK3tnFjROQjAcPPI44mE58VUa2zq-l-XMNGSVLTxRmEJ7xeHPZsfXazdZXaoQaeMVwMBSXeOIdpGvBN9/s320/Mata%20Gerinda%20poles%20-%20onlapak.webp" alt="Mata Gerinda Poles">`,
-                description: "BISA COD - impact baut roda truk impact wrench 21V Baterai Semua motor tembaga Cordless Kunci Impact 1200N.M Impak Buka Motor.",
-                price: "Rp 280.000",
-                affiliateLink: "https://vt.tokopedia.com/t/ZS9Sko4t72VaD-jBxem/"
-            }
-        };
-5: {
-                title: "Panci Anti Lengket",
-                image: `<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAjjbzA11RvHuUk7GfLh44rbF5Y2Zbqxcbkljd2fFTDjH5AqiNn2sSVJ_RCIUTByKHj85e3xIZzNNAp92SC2MDq_h_NnJpqldXSuk84B8iY2S6eK3tnFjROQjAcPPI44mE58VUa2zq-l-XMNGSVLTxRmEJ7xeHPZsfXazdZXaoQaeMVwMBSXeOIdpGvBN9/s320/Mata%20Gerinda%20poles%20-%20onlapak.webp" alt="Mata Gerinda Poles">`,
-                description: "Panci anti lengket dengan coating Teflon berkualitas. Diameter 28cm, cocok untuk berbagai jenis masakan.",
-                price: "Rp 280.000",
-                affiliateLink: "https://affiliate-link-5.com"
-            }
-        };
-
-        // Hamburger Menu
+        // Navigasi Hamburger
         const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        const navMenu = document.getElementById('navMenu');
+
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
+        // Fungsi Buka Popup Modal
+        function bukaModal(button) {
+            const card = button.closest('.product-card');
+            
+            // Mengambil data dari Atribut HTML
+            const judul = card.getAttribute('data-judul');
+            const harga = card.getAttribute('data-harga');
+            const gambar = card.getAttribute('data-gambar');
+            const deskripsi = card.getAttribute('data-deskripsi');
+            const link = card.getAttribute('data-link');
 
-        // Category Filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.product-card');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const category = button.dataset.category;
-                productCards.forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
+            // Mengisi data ke Modal
+            document.getElementById('modalJudul').innerText = judul;
+            document.getElementById('modalHarga').innerText = harga;
+            document.getElementById('modalGambar').src = gambar;
+            document.getElementById('modalDeskripsi').innerText = deskripsi;
+            document.getElementById('modalLink').href = link;
 
-        // Modal Functionality
-        const modal = document.getElementById('productModal');
-        const closeModal = document.getElementById('closeModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalImage = document.getElementById('modalImage');
-        const modalDescription = document.getElementById('modalDescription');
-        const modalPrice = document.getElementById('modalPrice');
-        const modalOrderBtn = document.getElementById('modalOrderBtn');
+            // Tampilkan Modal
+            document.getElementById('modalOverlay').classList.add('active');
+        }
 
-        productCards.forEach(card => {
-            const detailBtn = card.querySelector('.btn-detail');
-            detailBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const productId = card.dataset.id;
-                const product = products[productId];
-                
-                if(product) {
-                    modalTitle.textContent = product.title;
-                    
-                    // PERBAIKAN UTAMA: Menggunakan innerHTML agar tag <img> ter-render sebagai gambar
-                    modalImage.innerHTML = product.image;
-                    
-                    modalDescription.textContent = product.description;
-                    modalPrice.textContent = product.price;
-                    modalOrderBtn.href = product.affiliateLink;
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+        // Fungsi Tutup Popup Modal
+        function tutupModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // Tutup modal jika area luar diklik
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalOverlay');
+            if (event.target === modal) {
+                tutupModal();
+            }
+        }
+
+        // Fungsi Filter Label/Kategori Produk
+        function filterProduk(kategori) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.btn-filter');
+
+            // Highlight Tombol
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('onclick').includes(kategori)) {
+                    btn.classList.add('active');
                 }
             });
-        });
 
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
+            // Tampilkan/Sembunyikan Card
+            cards.forEach(card => {
+                const katCard = card.getAttribute('data-kategori');
+                if (kategori === 'semua' || katCard === kategori) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 </html>
