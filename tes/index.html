@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alat Onlapak - Toko online terpercaya untuk berbagai peralatan berkualitas">
+    <title>Alat Onlapak - Peralatan Berkualitas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #f39c12;
+            --bg-light: #ecf0f1;
+            --text-dark: #34495e;
+            --white: #ffffff;
+            --shadow: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #34495e);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #34495e);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1s;
+        }
+
+        /* Category Filter */
+        .category-filter {
+            background: var(--white);
+            padding: 2rem 0;
+            box-shadow: 0 2px 5px var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: var(--white);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Product Grid */
+        .products-section {
+            padding: 2rem 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px var(--shadow);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .btn-detail {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-detail:hover {
+            background: #34495e;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            background: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+        }
+
+        .modal-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .modal-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-order {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-order:hover {
+            background: #c0392b;
+        }
+
+        /* Ad Space */
+        .ad-space {
+            background: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        .ad-space h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .product-image {
+                height: 150px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .product-info h2 {
+                font-size: 1rem;
+            }
+
+            .product-price {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🛒 Alat Onlapak</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with H1 for SEO -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Alat Onlapak - Peralatan Berkualitas untuk Kebutuhan Anda</h1>
+            <p>Temukan berbagai peralatan terbaik dengan harga terjangkau. Kualitas terjamin, pengiriman cepat, dan layanan pelanggan yang ramah.</p>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="category-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">Semua Produk</button>
+                <button class="filter-btn" data-category="pancing">Alat Pancing</button>
+                <button class="filter-btn" data-category="dapur">Peralatan Dapur</button>
+                <button class="filter-btn" data-category="taman">Alat Taman</button>
+                <button class="filter-btn" data-category="olahraga">Alat Olahraga</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="pancing" data-id="1">
+                    <div class="product-image">🎣</div>
+                    <div class="product-info">
+                        <h2>Joran Pancing Carbon Pro</h2>
+                        <div class="product-price">Rp 450.000</div>
+                        <button class="btn-detail">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-category="pancing" data-id="2">
+                    <div class="product-image">🎣</div>
+                    <div class="product-info">
+                        <h2>Reel Pancing Shimano</h2>
+                        <div class="product-price">Rp 750.000</div>
+                        <button class="btn-detail">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-category="dapur" data-id="3">
+                    <div class="product-image">🔪</div>
+                    <div class="product-info">
+                        <h2>Set Pisau Dapur Premium</h2>
+                        <div class="product-price">Rp 320.000</div>
+                        <button class="btn-detail">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-category="dapur" data-id="4">
+                    <div class="product-image">🍳</div>
+                    <div class="product-info">
+                        <h2>Panci Anti Lengket</h2>
+                        <div class="product-price">Rp 280.000</div>
+                        <button class="btn-detail">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-category="taman" data-id="5">
+                    <div class="product-image">🌱</div>
+                    <div class="product-info">
+                        <h2>Set Alat Berkebun</h2>
+                        <div class="product-price">Rp 195.000</div>
+                        <button class="btn-detail">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-category="taman" data-id="6">
+                    <div class="product-image">🌿</div>
+                    <div class="product-info">
+                        <h2>Gunting Tanaman</h2>
+                        <div class="product-price">Rp 85.000</div>
+                        <button class="btn-detail">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card" data-category="olahraga" data-id="7">
+                    <div class="product-image">🏋️</div>
+                    <div class="product-info">
+                        <h2>Dumbbell Set 20kg</h2>
+                        <div class="product-price">Rp 650.000</div>
+                        <button class="btn-detail">Lihat Detail</button>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card" data-category="olahraga" data-id="8">
+                    <div class="product-image">🧘</div>
+                    <div class="product-info">
+                        <h2>Matras Yoga Premium</h2>
+                        <div class="product-price">Rp 175.000</div>
+                        <button class="btn-detail">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Space -->
+            <div class="ad-space">
+                <h3>📢 Ruang Iklan</h3>
+                <p>Tempat ini tersedia untuk iklan Anda. Hubungi kami untuk informasi lebih lanjut.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Detail Produk</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image" id="modalImage">🎣</div>
+                <div class="modal-description" id="modalDescription">
+                    Deskripsi produk akan muncul di sini.
+                </div>
+                <div class="modal-price" id="modalPrice">Rp 0</div>
+                <a href="#" class="btn-order" id="modalOrderBtn" target="_blank" rel="noopener noreferrer">
+                    🛒 Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Alat Onlapak</h3>
+                    <p>Toko online terpercaya untuk berbagai peralatan berkualitas dengan harga terbaik.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Hubungi Kami</h3>
+                    <ul>
+                        <li>📧 info@alatonlapak.com</li>
+                        <li>📱 +62 812-3456-7890</li>
+                        <li>📍 Jakarta, Indonesia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Alat Onlapak. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = {
+            1: {
+                title: "Joran Pancing Carbon Pro",
+                image: "🎣",
+                description: "Joran pancing berkualitas tinggi dengan bahan carbon fiber yang ringan namun kuat. Panjang 2.4 meter, cocok untuk berbagai jenis ikan. Dilengkapi dengan handle ergonomis dan reel seat yang kokoh. Ideal untuk pemancing pemula hingga profesional.",
+                price: "Rp 450.000",
+                affiliateLink: "https://affiliate-link-1.com"
+            },
+            2: {
+                title: "Reel Pancing Shimano",
+                image: "🎣",
+                description: "Reel pancing Shimano original dengan teknologi advanced. Gear ratio 5.2:1, ball bearing 6+1, dan drag system yang smooth. Tahan air asin dan cocok untuk berbagai kondisi pemancingan. Garansi resmi 1 tahun.",
+                price: "Rp 750.000",
+                affiliateLink: "https://affiliate-link-2.com"
+            },
+            3: {
+                title: "Set Pisau Dapur Premium",
+                image: "🔪",
+                description: "Set pisau dapur lengkap dengan 5 jenis pisau berbeda. Material stainless steel berkualitas tinggi dengan handle kayu yang nyaman. Termasuk blok pisau dan stone sharpening. Cocok untuk penggunaan profesional di dapur.",
+                price: "Rp 320.000",
+                affiliateLink: "https://affiliate-link-3.com"
+            },
+            4: {
+                title: "Panci Anti Lengket",
+                image: "🍳",
+                description: "Panci anti lengket dengan coating Teflon berkualitas. Diameter 28cm, cocok untuk berbagai jenis masakan. Heat distribution yang merata dan tahan hingga suhu 260°C. Mudah dibersihkan dan aman untuk dishwasher.",
+                price: "Rp 280.000",
+                affiliateLink: "https://affiliate-link-4.com"
+            },
+            5: {
+                title: "Set Alat Berkebun",
+                image: "🌱",
+                description: "Set alat berkebun lengkap dengan 8 piece. Termasuk sekop kecil, garpu tanah, gunting tanaman, sarung tangan, dan accessories lainnya. Material stainless steel anti karat dengan handle ergonomis. Cocok untuk pemula.",
+                price: "Rp 195.000",
+                affiliateLink: "https://affiliate-link-5.com"
+            },
+            6: {
+                title: "Gunting Tanaman",
+                image: "🌿",
+                description: "Gunting tanaman profesional dengan blade stainless steel yang tajam. Handle ergonomis dengan grip anti slip. Cocok untuk memotong ranting hingga diameter 2cm. Dilengkapi dengan safety lock dan spring mechanism.",
+                price: "Rp 85.000",
+                affiliateLink: "https://affiliate-link-6.com"
+            },
+            7: {
+                title: "Dumbbell Set 20kg",
+                image: "🏋️",
+                description: "Dumbbell set dengan berat total 20kg (10kg per sisi). Material cast iron dengan coating rubber anti slip. Adjustable weight dari 2.5kg hingga 10kg per sisi. Termasuk storage rack. Ideal untuk home gym.",
+                price: "Rp 650.000",
+                affiliateLink: "https://affiliate-link-7.com"
+            },
+            8: {
+                title: "Matras Yoga Premium",
+                image: "🧘",
+                description: "Matras yoga dengan ketebalan 6mm dan material TPE eco-friendly. Non-slip surface untuk stabilitas maksimal. Ukuran 183cm x 61cm, ringan dan mudah dibawa. Termasuk carrying strap. Cocok untuk yoga, pilates, dan stretching.",
+                price: "Rp 175.000",
+                affiliateLink: "https://affiliate-link-8.com"
+            }
+        };
+
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Category Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.dataset.category;
+
+                // Filter products
+                productCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal Functionality
+        const modal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalOrderBtn = document.getElementById('modalOrderBtn');
+
+        // Open modal when clicking on product card
+        productCards.forEach(card => {
+            const detailBtn = card.querySelector('.btn-detail');
+            detailBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const productId = card.dataset.id;
+                const product = products[productId];
+
+                modalTitle.textContent = product.title;
+                modalImage.textContent = product.image;
+                modalDescription.textContent = product.description;
+                modalPrice.textContent = product.price;
+                modalOrderBtn.href = product.affiliateLink;
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
